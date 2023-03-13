@@ -1,0 +1,89 @@
+# Note:
+# Changing FRAMES and or RESOLUTION will heavily impact load on CPU.
+# If you have a powerful enough computer you may set it to 1080p60
+tokens:
+--client_id " " --oauth_token " "
+--duration 10.5 --resolution 1080 
+
+# 	test commands
+python main.py --data "g Just Chatting, c xQcOW, c Trainwreckstv" --client_id " " --oauth_token " " --duration 10.5 --resolution 1080 1920 --title "Top Just Chatting, xQc and Trainwrecks Twitch Clips Today" --tags "xqc, trainwrecks, twitch clips, xqc twitch, trainwrecks twitch"
+
+
+#	video creation commands
+python main.py --data "g Just Chatting, c xQcOW, c Trainwreckstv" --client_id " " --oauth_token " " --duration 10.5 --resolution 1080 1920 --title "Top Just Chatting, xQc and Trainwrecks Twitch Clips Today" --tags "xqc, trainwrecks, twitch clips, xqc twitch, trainwrecks twitch"
+
+#	valorant daily
+python main.py --data "g Valorant, c tarik, c Valorant, c Tenz, c Sinatraa, c JOLLZTV, c Zombs, c will1us, c shahzam, c subroza, c stewie2k, c grimm, c hiko, c wardell, c kyedae, c keeoh" --client_id " " --oauth_token " " --duration 8.5 --resolution 1080 1920 --title "StreamerDigest **GAMING** (Daily!)" --tags "twitch, twitch daily, twitch clip compilations, tarik, demisux, mizkif, shanks_ttv, disguisedtoast, jsaturno0, valleague_fr, brookeab Valorant,   tarik,   Valorant,   Tenz,   Sinatraa,   JOLLZTV,   Zombs,   will1us,   shahzam,   subroza,   stewie2k,   grimm,   hiko,   wardell,   kyedae,   keeoh"
+
+
+
+
+
+
+
+
+#	make video (run thru .py ex)
+from time import sleep
+from twitchtube.video import make_video
+from twitchtube.utils import get_path
+
+while True:
+    make_video(
+        data=["channel xQcOW", "game Just Chatting"],
+        path=get_path(),
+        client_id="1hq8ektpki36w5kn37mluioungyqjo",  # example client id (fake)
+        oauth_token="9f5einm9qtp0bj4m9l1ykevpwdn98o",  # example token (fake)
+        video_length=10.5, # minutes as float
+        resolution=(1080, 1920), # height x width
+        frames=60,
+        period=24, # most viewed clips today
+    )
+    sleep(24 * 60 * 60) # make a video daily
+
+
+#	make_video params
+def make_video(
+    data: list = DATA,
+    blacklist: list = BLACKLIST,
+    # other
+    path: str = get_path(),
+    check_version: bool = CHECK_VERSION,
+    # twitch
+    client_id: str = CLIENT_ID,
+    oauth_token: str = OAUTH_TOKEN,
+    period: int = PERIOD,
+    language: str = LANGUAGE,
+    limit: int = LIMIT,
+    # selenium
+    profile_path: str = ROOT_PROFILE_PATH,
+    sleep: int = SLEEP,
+    headless: bool = HEADLESS,
+    debug: bool = DEBUG,
+    # video options
+    render_video: bool = RENDER_VIDEO,
+    file_name: str = FILE_NAME,
+    resolution: tuple = RESOLUTION,
+    frames: int = FRAMES,
+    video_length: float = VIDEO_LENGTH,
+    resize_clips: bool = RESIZE_CLIPS,
+    enable_intro: bool = ENABLE_INTRO,
+    resize_intro: bool = RESIZE_INTRO,
+    intro_path: str = INTRO_FILE_PATH,
+    enable_transition: bool = ENABLE_TRANSITION,
+    resize_transition: bool = RESIZE_TRANSITION,
+    transition_path: str = TRANSITION_FILE_PATH,
+    enable_outro: bool = ENABLE_OUTRO,
+    resize_outro: bool = RESIZE_OUTRO,
+    outro_path: str = OUTRO_FILE_PATH,
+    # other options
+    save_file: bool = SAVE_TO_FILE,
+    save_file_name: str = SAVE_FILE_NAME,
+    upload_video: bool = UPLOAD_TO_YOUTUBE,
+    delete_clips: bool = DELETE_CLIPS,
+    # youtube
+    title: str = TITLE,
+    description: str = DESCRIPTION,
+    thumbnail: str = THUMBNAIL,
+    tags: list = TAGS,
+) -> None:
+    ...
